@@ -1,0 +1,21 @@
+# Netlify settings for Tend. No build step: the site is plain files in /site.
+[build]
+  publish = "site"
+  functions = "netlify/functions"
+
+# Always fetch the latest app and service worker so updates show up right away.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
